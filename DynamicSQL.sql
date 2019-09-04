@@ -13,3 +13,26 @@ to execute the dynamic sql use systemprocedure sp_executesql . it takse two pre-
 @params = this is the second parameter , its used to declare paramter 
 ============== NOTE : End ============= */ 
 
+---================= Example 1 : Start ========================
+Alter procedure prcGerProduct @dbname nvarchar(max), @tbl nvarchar(max), @topN int, @byColumnd nvarchar(max)
+as
+Begin
+	declare 
+			@sql nvarchar(max),
+			@topNStr nvarchar(max)
+
+	set @topNStr = CAST(@topN as nvarchar(100));
+
+--- construct SQL
+	set @sql= 'select top '+ @topNStr +
+				' * from '+ QUOTENAME(@dbname) +
+					'.dbo.'+ QUOTENAME(@tbl) +
+						' order by '+QUOTENAME(@byColumnd)
+--- print SQL
+	print @sql
+--- execute the SQL
+	exec sp_executesql @sql
+
+End
+---================= Example 1 : End ========================
+

@@ -36,3 +36,12 @@ Begin
 End
 ---================= Example 1 : End ========================
 
+
+---================= Example 2 : Start ========================
+alter PROCEDURE prcExec2 @tblname nvarchar(127),
+                                 @key     varchar(10) AS
+EXEC('SELECT CustomerId, CompanyName, ContactName
+      FROM ' + @tblname + '
+      WHERE companyid = '''' + @key + ''''')
+	  --print @key
+---================= Example 2 : End ========================

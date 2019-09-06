@@ -38,10 +38,13 @@ End
 
 
 ---================= Example 2 : Start ========================
-alter PROCEDURE prcExec2 @tblname nvarchar(127),
-                                 @key     varchar(10) AS
-EXEC('SELECT CustomerId, CompanyName, ContactName
+alter PROCEDURE prcExec2 @tblname nvarchar(127), @key     varchar(10)
+AS
+Declare @sql varchar(max)
+set @sql= 'SELECT CustomerId, CompanyName, ContactName
       FROM ' + @tblname + '
-      WHERE companyid = '''' + @key + ''''')
-	  --print @key
+      WHERE CompanyName like ''%' + @key + '%'''
+	  	  print @sql
+EXEC(@sql)
+--exec prcExec2 'Customers','BO'
 ---================= Example 2 : End ========================

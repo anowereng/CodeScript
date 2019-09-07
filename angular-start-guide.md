@@ -38,15 +38,15 @@ For Bootstrap 3 ( old version )
  -npm install bootstrap jquery popper -save 
  
 > npm install font-awesome –save 
->  Importing the CSS
+-  Importing the CSS
 We have two options to import the CSS from Bootstrap that was installed from NPM:
 
-1: Configure angular.json:
+> ###1: Configure angular.json:
     "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
                ,"./node_modules/font-awesome/css/font-awesome.min.css"
                ]
-2: Import directly in src/style.css or src/style.scss:
+> ###2: Import directly in src/style.css or src/style.scss:
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
    

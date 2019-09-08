@@ -79,7 +79,7 @@ where defualt route is **/list** when oroject start
   ],
 Please confirm your **router module** add in app.module imports array
 ## Template Use
-1. ng g c 
+1. ng g c topbar
 2. ``` <app-topbar></app-topbar>```
    ```<router-outlet></router-outlet>```
 3.  ```<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 

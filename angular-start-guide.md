@@ -14,7 +14,7 @@ Before you begin, make sure your development environment includes Node.js® ( ht
  Install the Angular CLI globally.
  - npm install -g @angular/cli
  
-2: Run the CLI command ng new and provide the name my-app, as shown here:
+2: Run the CLI command **ng new** and provide the name **my-app**, as shown here:
  -ng new my-app
  
 3: Run the application

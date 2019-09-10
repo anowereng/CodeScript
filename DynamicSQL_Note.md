@@ -1,3 +1,40 @@
+
+### Recompile
+Forcing a recompile every time with OPTION (RECOMPILE) can add too much load to the system, 
+The TOP 200 for the search on customer name limits the output
+
+Difference between static vs dynamic sql
+(loading...)
+
+### And condition use 
+ 	WHERE	(A.OrderID = @OrderID OR @OrderID IS NULL)
+		AND	(A.OrderDate >= @FromDate OR @FromDate IS NULL)
+		AND	(A.OrderDate <= @ToDate OR @ToDate IS NULL)
+		AND	(A.CustomerID >= @CustomerID OR @CustomerID IS NULL)
+		AND (F.UnitPrice >= @MinPrice OR @MinPrice IS NULL)
+		AND (F.UnitPrice <= @MaxPrice OR @MaxPrice IS NULL)
+		AND (A.ShipRegion = @ShipRegion OR @ShipRegion IS NULL)
+		AND (C.CompanyName LIKE @CustomerName + '%' OR @CustomerName IS NULL)
+		AND (F.ProductName LIKE @ProductName + '%' OR @ProductName IS NULL)
+      
+here AND  (c.Region = @region OR @region IS NULL)
+The effect of all the @x IS NULL clauses is that if an input parameter is NULL, then the corresponding AND condition is always true.
+
+3. coalesce()
+==========
+coalesce() is a function that takes a list of values as argument, and returns the first non-NULL value in the list,  
+
+### ORDER BY USE CASE CONDITION 
+4. ORDER BY CASE @sortcol WHEN 'OrderID'   THEN o.OrderID
+                       WHEN 'EmployeeID'   THEN o.EmployeeID
+                       WHEN 'ProductID'    THEN od.ProductID
+         END,
+         CASE @sortcol WHEN 'CustomerName' THEN c.CompanyName
+                       WHEN 'ProductName'  THEN p.ProductName
+         END,
+         CASE @sortcol WHEN 'OrderDate'    THEN o.OrderDate 
+         END
+
 ## Why Dynamic SQL?
 It might as well be said directly: solutions with dynamic SQL require more from you as a programmer. Not only in skill, but foremost in discipline and understanding of what you are doing. Dynamic SQL is a wonderful tool when used correctly, but in the hands of the unexperienced it far too often leads to solutions that are flawed and hopeless to maintain.
 

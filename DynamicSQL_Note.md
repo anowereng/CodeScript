@@ -1,4 +1,38 @@
 
+
+ CREATE procedure prcStatic_SearchOrders_1
+	@OrderID nvarchar(200)		= null ,
+	@CustomerID nvarchar(200)	= null ,
+	@CustomerName nvarchar(200)	= null ,
+	@ProductName nvarchar(200)	= null ,
+	@EmployeeID nvarchar(200)	= null , 
+	@FromDate	datetime		= null ,
+	@ToDate		datetime		= null ,
+	@MinPrice	datetime		= null ,
+	@MaxPrice	datetime		= null ,
+	@ShippedDate nvarchar(200)	= null ,
+	@ShipName nvarchar(200)		= null ,
+	@ShipAddress nvarchar(200)	= null ,
+	@ShipCity nvarchar(200)		= null ,
+	@ShipRegion nvarchar(200)	= null as
+	
+	Select  A.OrderID, A.OrderDate, E.UnitPrice, E.Quantity,C.CustomerID, C.CompanyName, C.Address, C.City, C.Region,
+			C.PostalCode, C.Country, C.Phone, F.ProductID, F.ProductName, F.UnitsInStock, F.UnitsOnOrder
+	from	Orders A
+	join	Customers C on A.CustomerID =  C.CustomerID
+	join	employees D on A.EmployeeID =  D.EmployeeID
+	join	[Order Details] E on A.OrderID = E.OrderID
+	join	Products F on E.ProductID =  E.ProductID
+		WHERE	(A.OrderID = @OrderID OR @OrderID IS NULL)
+		AND	(A.OrderDate >= @FromDate OR @FromDate IS NULL)
+		AND	(A.OrderDate <= @ToDate OR @ToDate IS NULL)
+		AND	(A.CustomerID >= @CustomerID OR @CustomerID IS NULL)
+		AND (F.UnitPrice >= @MinPrice OR @MinPrice IS NULL)
+		AND (F.UnitPrice <= @MaxPrice OR @MaxPrice IS NULL)
+		AND (A.ShipRegion = @ShipRegion OR @ShipRegion IS NULL)
+		AND (C.CompanyName LIKE @CustomerName + '%' OR @CustomerName IS NULL)
+		AND (F.ProductName LIKE @ProductName + '%' OR @ProductName IS NULL) 
+	ORDER	BY A.OrderID
 ### Recompile
 Forcing a recompile every time with OPTION (RECOMPILE) can add too much load to the system, 
 The TOP 200 for the search on customer name limits the output

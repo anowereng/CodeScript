@@ -1,0 +1,11 @@
+- angularv6 snippets
+- angular files
+- angualr language service
+- angular 2 switcher 
+- auto rename tags
+- bracket pair colorizer
+- debugger for chrome
+- material icon theme
+- path intellisense
+- prettier
+- tslint

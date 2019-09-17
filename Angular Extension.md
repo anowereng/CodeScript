@@ -1,4 +1,4 @@
-- angularv6 snippets
+- Angular Snippets (Version 8)
 - angular files
 - angualr language service
 - angular 2 switcher 

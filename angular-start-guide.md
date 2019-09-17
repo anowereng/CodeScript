@@ -43,19 +43,24 @@ Install jQuery: npm install jquery@1.9.1 --save
 -  Importing the CSS
 We have two options to import the CSS from Bootstrap that was installed from NPM:
 
-> ###1: Configure angular.json:
-    "styles": [
+> ###1: Configure angular.json
+   ``` 
+   "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
                ,"./node_modules/font-awesome/css/font-awesome.min.css"
                ]
+             
 > ###2: Import directly in src/style.css or src/style.scss:
-@import '~bootstrap/dist/css/bootstrap.min.css';
+                       @import '~bootstrap/dist/css/bootstrap.min.css';
+
 ## bootstrap and jquery scripts
+ 
     "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js"
-            ]
+            ]  
+            ```
 
 ## Component Install
 
